@@ -1,10 +1,8 @@
 package com.example.laybegjava_task2;
 
-import androidx.annotation.NonNull;
-
-import java.io.Serializable;
-
-public class User implements Serializable {
+import android.os.Parcel;
+import android.os.Parcelable;
+public class User implements Parcelable {
     String name;
     int age;
 
@@ -13,11 +11,38 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    @NonNull
+    protected User(Parcel in) {
+        name = in.readString();
+        age = in.readInt();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(age);
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "name=" + name + '\'' +
+                "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
     }

@@ -5,10 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/text_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No data"
+        android:textColor="@color/black"
+        android:textSize="25sp"/>
+
     <Button
-        android:id="@+id/btn_open"
+        android:id="@+id/btn_main"
+        android:layout_marginVertical="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/open_second_activity" />
